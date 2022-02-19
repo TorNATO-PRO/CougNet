@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CougModels;
+using CougModels.ViewModels;
 using CougNet.Data;
 
 namespace CougNet
@@ -89,12 +90,23 @@ namespace CougNet
                 return NotFound();
             }
 
-            var coug = await _context.Coug.FindAsync(id);
-            if (coug == null)
+            var coug = _context.Coug.Include(x => x.Major.Id).Include(x => x.Gender.Id).Include(x => x.Year.Id).FirstOrDefault(x => x.Id == id);
+            var tempcoug = new CougViewModel { AppId = appID };
+
+            if (coug != null)
             {
-                return NotFound();
+                tempcoug.Id = coug.Id;
+                tempcoug.Firstname = coug.Firstname;
+                tempcoug.Lastname = coug.Lastname;
+                tempcoug.MajorId = coug.Major.Id;
+                tempcoug.CougYearId = coug.Year.Id;
             }
-            return View(coug);
+
+            ViewBag.Genders = new SelectList(_context.Gender.ToList(), "Id", "Name").ToList();
+            ViewBag.Genders = new SelectList(_context.CougYear.ToList(), "Id", "Year").ToList();
+            ViewBag.Genders = new SelectList(_context.CougCourse.ToList(), "Id", "Name").ToList();
+
+            return View(tempcoug);
         }
 
         // POST: Cougs/Edit/5
@@ -102,7 +114,7 @@ namespace CougNet
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Firstname,Lastname")] Coug coug)
+        public async Task<IActionResult> Edit(int id, CougViewModel coug)
         {
             if (id != coug.Id)
             {
@@ -113,7 +125,36 @@ namespace CougNet
             {
                 try
                 {
-                    _context.Update(coug);
+                    var appID = User.Identity.Name;
+                    var gender = _context.Gender.FirstOrDefault(x => x.Id == coug.GenderId);
+                    var year = _context.CougYear.FirstOrDefault(x => x.Id == coug.CougYearId);
+                    var major = _context.CougCourse.FirstOrDefault(x => x.Id == coug.MajorId);
+
+                    var dbCoug = _context.Coug.FirstOrDefault(x => x.Id == coug.Id);
+                    if (dbCoug == null)
+                    {
+                        //create a new one
+                        _context.Add(new Coug
+                        {
+                            Firstname = coug.Firstname,
+                            Lastname = coug.Lastname,
+                            Gender = gender,
+                            Year = year,
+                            Major = major,
+                            AppId = appID
+                        })
+                    } else
+                    {
+                        //update the old one
+                        dbCoug.Firstname = coug.Firstname;
+                        dbCoug.Lastname = coug.Lastname;
+                        dbCoug.Gender = gender;
+                        dbCoug.Year = year;
+                        dbCoug.Major = major;
+                        dbCoug.AppId = appID;
+                        _context.Update(dbCoug);
+                    }
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

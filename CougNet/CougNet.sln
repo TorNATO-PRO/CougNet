@@ -5,16 +5,22 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CougNet", "CougNet\CougNet.csproj", "{6B0D71FF-4FB3-49FF-B249-8B7712D33AEE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CougModels", "CougModels\CougModels.csproj", "{67CEAC26-8E98-461D-963F-2F0113495524}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6B0D71FF-4FB3-49FF-B249-8B7712D33AEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6B0D71FF-4FB3-49FF-B249-8B7712D33AEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6B0D71FF-4FB3-49FF-B249-8B7712D33AEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6B0D71FF-4FB3-49FF-B249-8B7712D33AEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59CCB62D-66CE-4FA9-9CC0-15EBCA1FBBE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59CCB62D-66CE-4FA9-9CC0-15EBCA1FBBE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59CCB62D-66CE-4FA9-9CC0-15EBCA1FBBE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59CCB62D-66CE-4FA9-9CC0-15EBCA1FBBE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CEAC26-8E98-461D-963F-2F0113495524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67CEAC26-8E98-461D-963F-2F0113495524}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67CEAC26-8E98-461D-963F-2F0113495524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67CEAC26-8E98-461D-963F-2F0113495524}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

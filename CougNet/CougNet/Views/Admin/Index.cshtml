@@ -3,9 +3,11 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <a class="nav-link text-dark" asp-area="" asp-controller="Genders" asp-action="Index">Genders</a>
-    <a class="nav-link text-dark" asp-area="" asp-controller="CougCourse" asp-action="Index">Courses</a>
-    <a class="nav-link text-dark" asp-area="" asp-controller="CougYear" asp-action="Index">Years</a>\
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-3">Admin Dashboard</h1>
+    <br />
+    <div class="list-group">
+        <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Genders" asp-action="Index">Genders</a>
+        <a class="list-group-item list-group-item-action" asp-area="" asp-controller="CougCourse" asp-action="Index">Courses</a>
+        <a class="list-group-item list-group-item-action" asp-area="" asp-controller="CougYear" asp-action="Index">Years</a>
+    </div>
 </div>

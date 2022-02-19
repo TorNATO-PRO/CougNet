@@ -22,4 +22,8 @@
     <ProjectReference Include="..\CougModels\CougModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\cougar_wsu.jpg" />
+  </ItemGroup>
+
 </Project>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
+// These are our basic classes that make up the backend interactions.
 namespace CougModels
 {
     public class Coug

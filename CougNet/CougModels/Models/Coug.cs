@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-// These are our basic classes that make up the backend interactions.
 namespace CougModels
 {
     public class Coug
@@ -22,5 +22,9 @@ namespace CougModels
         public CougCourse Major { get; set; }
 
         public string AppId { get; set; }
+
+        [Display(Name = "Name")]
+        [NotMapped]
+        public string Name { get { return Firstname + " " + Lastname; } }
     }
 }

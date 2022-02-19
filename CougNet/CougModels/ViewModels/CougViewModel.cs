@@ -24,5 +24,8 @@ namespace CougModels.ViewModels
         public int MajorId { get; set; }
 
         public string AppId { get; set; }
+
+        [Display(Name = "Name")]
+        public string Name { get { return Firstname + " " + Lastname; } }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,11 +21,15 @@ namespace CougNet
 
         // GET: Cougs
         public async Task<IActionResult> Index()
-        {
-            var cougID = User.Identity.Name;
+        { 
+            var appID = User.Identity.Name;
 
             // Check if the person has a profile already
-            var cougProfile = _context.Coug.Where(x => x.AppId == cougID).FirstOrDefault();
+            var cougProfile = _context.Coug
+                .Include(x => x.Gender)
+                .Include(x => x.Year)
+                .Include(x => x.Major)
+                .Where(x => x.AppId == appID).FirstOrDefault();
 
             if (cougProfile == null)
             {

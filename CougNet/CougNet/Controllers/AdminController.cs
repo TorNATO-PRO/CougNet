@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CougNet.Controllers
 {
+// [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         // GET: AdminController

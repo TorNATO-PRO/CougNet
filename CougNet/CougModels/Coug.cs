@@ -17,5 +17,7 @@ namespace CougModels
         public CougYear Year { get; set; }
 
         public CougCourse Major { get; set; }
+
+        public string AppId { get; set; }
     }
 }

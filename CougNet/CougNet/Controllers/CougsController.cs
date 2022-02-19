@@ -90,7 +90,11 @@ namespace CougNet
                 return NotFound();
             }
 
-            var coug = _context.Coug.Include(x => x.Major.Id).Include(x => x.Gender.Id).Include(x => x.Year.Id).FirstOrDefault(x => x.Id == id);
+            var coug = _context.Coug
+                .Include(x => x.Major)
+                .Include(x => x.Gender)
+                .Include(x => x.Year)
+                .FirstOrDefault(x => x.Id == id);
             var tempcoug = new CougViewModel { AppId = appID };
 
             if (coug != null)
@@ -103,8 +107,8 @@ namespace CougNet
             }
 
             ViewBag.Genders = new SelectList(_context.Gender.ToList(), "Id", "Name").ToList();
-            ViewBag.Genders = new SelectList(_context.CougYear.ToList(), "Id", "Year").ToList();
-            ViewBag.Genders = new SelectList(_context.CougCourse.ToList(), "Id", "Name").ToList();
+            ViewBag.Years = new SelectList(_context.CougYear.ToList(), "Id", "Year").ToList();
+            ViewBag.Majors = new SelectList(_context.CougCourse.ToList(), "Id", "Name").ToList();
 
             return View(tempcoug);
         }
@@ -142,7 +146,7 @@ namespace CougNet
                             Year = year,
                             Major = major,
                             AppId = appID
-                        })
+                        });
                     } else
                     {
                         //update the old one

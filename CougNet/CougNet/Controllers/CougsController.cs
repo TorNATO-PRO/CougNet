@@ -82,6 +82,8 @@ namespace CougNet
         // GET: Cougs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var appID = User.Identity.Name;
+
             if (id == null)
             {
                 return NotFound();

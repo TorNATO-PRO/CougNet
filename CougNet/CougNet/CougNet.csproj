@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>aspnet-CougNet-D8E9C5C6-A6A3-42A1-9FA3-676B0590329B</UserSecretsId>
+    <UserSecretsId>aspnet-CougNet-4C11EFE4-31D1-4A02-AFAC-DD64C92F4E6F</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

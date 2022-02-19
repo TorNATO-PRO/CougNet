@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using CougModels;
 
 namespace CougNet.Data
 {
@@ -12,5 +13,8 @@ namespace CougNet.Data
             : base(options)
         {
         }
+        public DbSet<CougModels.Gender> Gender { get; set; }
+        public DbSet<CougModels.CougYear> CougYear { get; set; }
+        public DbSet<CougModels.CougCourse> CougCourse { get; set; }
     }
 }

@@ -421,3 +421,7 @@ bin
 
 # End of https://www.toptal.com/developers/gitignore/api/dotnetcore,csharp,fsharp
 
+.db
+*.db
+.sln
+*.sln

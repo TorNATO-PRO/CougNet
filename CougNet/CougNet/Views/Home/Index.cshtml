@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<CougModels.CougProgram>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -15,8 +17,29 @@
         <br />
         <p>We strive to make <b>connecting</b> with Cougs as easy as possible.</p>
     </div>
-
     <hr />
+
+    @foreach (var program in Model)
+    {
+        <div class="card">
+            <div class="card-header">
+                <h5>@program.Name</h5>
+            </div>
+            <div class="card-body">
+                <p><b>Description</b></p>
+                <p class="card-text">@program.Description</p>
+                <p><b>Requirements</b></p>
+                <p class="card-text">@program.Requirements</p>
+                <a href="#" class="btn btn-primary ">Go somewhere</a>
+                @if (program.IsOwner)
+                {
+                     <a asp-controller="CougPrograms" asp-action="Edit" class="btn btn-primary " asp-route-id="@program.Id">Edit</a>
+                }
+            </div>
+        </div>
+        <br />
+    }
+
 </body>
 </html>
 

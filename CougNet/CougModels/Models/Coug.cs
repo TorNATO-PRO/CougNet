@@ -25,6 +25,15 @@ namespace CougModels
 
         [Display(Name = "Name")]
         [NotMapped]
-        public string Name { get { return Firstname + " " + Lastname; } }
+        public string Name { get {
+                if (string.IsNullOrEmpty(Firstname))
+                {
+                    return AppId;
+                }
+                else
+                {
+                    return Firstname + " " + Lastname;
+                }
+            } }
     }
 }

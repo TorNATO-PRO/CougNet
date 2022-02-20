@@ -18,5 +18,11 @@ namespace CougModels
 
         [Display(Name = "Approval Required?")]
         public bool ApprovalRequired { get; set; }
+
+        [Display(Name = "Currently active?")]
+        public bool IsActive { get; set; }
+
+        [Display(Name = "Publicly available?")]
+        public bool IsPublic { get; set; }
     }
 }

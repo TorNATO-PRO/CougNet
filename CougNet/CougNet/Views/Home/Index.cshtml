@@ -30,10 +30,20 @@
                 <p class="card-text">@program.Description</p>
                 <p><b>Requirements</b></p>
                 <p class="card-text">@program.Requirements</p>
-                <a href="#" class="btn btn-primary ">Go somewhere</a>
+                @if (program.IsRegistered)
+                {
+                    <a asp-controller="CougPrograms" asp-action="Edit" class="btn btn-success " asp-route-id="@program.Id">Discussion Board</a>
+                }
+                else
+                {
+                    string register = program.ApprovalRequired ? "Request to Join" : "Join";
+                    <a asp-controller="CougPrograms" asp-action="Register" class="btn btn-success " asp-route-id="@program.Id">
+                    @register
+                    </a>
+                }
                 @if (program.IsOwner)
                 {
-                     <a asp-controller="CougPrograms" asp-action="Edit" class="btn btn-primary " asp-route-id="@program.Id">Edit</a>
+                     <a asp-controller="CougPrograms" asp-action="Edit" class="btn btn-warning " asp-route-id="@program.Id">Edit</a>
                 }
             </div>
         </div>

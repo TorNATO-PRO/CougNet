@@ -23,23 +23,25 @@ namespace CougNet
         // GET: Cougs
         public async Task<IActionResult> Index()
         {
-            if (User.Identity != null)
+            if (User.Identity == null)
             {
-                var appID = User.Identity.Name;
-
-                // Check if the person has a profile already
-                var cougProfile = _context.Coug
-                    .Include(x => x.Gender)
-                    .Include(x => x.Year)
-                    .Include(x => x.Major).FirstOrDefault(x => x.AppId == appID);
-
-                if (cougProfile == null)
-                {
-                    cougProfile = new Coug();
-                }
-
-                return View(cougProfile);
+                throw new NullReferenceException();
             }
+
+            var appID = User.Identity.Name;
+
+            // Check if the person has a profile already
+            var cougProfile = await _context.Coug
+                .Include(x => x.Gender)
+                .Include(x => x.Year)
+                .Include(x => x.Major).FirstOrDefaultAsync(x => x.AppId == appID);
+
+            if (cougProfile == null)
+            {
+                cougProfile = new Coug();
+            }
+
+            return View(cougProfile);
         }
 
         // GET: Cougs/Details/5
@@ -92,11 +94,11 @@ namespace CougNet
                 return NotFound();
             }
 
-            var coug = _context.Coug
+            var coug = await _context.Coug
                 .Include(x => x.Major)
                 .Include(x => x.Gender)
                 .Include(x => x.Year)
-                .FirstOrDefault(x => x.Id == id);
+                .FirstOrDefaultAsync(x => x.Id == id);
             var tempcoug = new CougViewModel { AppId = appID };
 
             if (coug != null)
@@ -149,7 +151,8 @@ namespace CougNet
                             Major = major,
                             AppId = appID
                         });
-                    } else
+                    }
+                    else
                     {
                         //update the old one
                         dbCoug.Firstname = coug.Firstname;

@@ -47,6 +47,7 @@ namespace CougNet.Controllers
                 {
                     //check if registered
                     prog.IsRegistered = IsRegistered(coug, prog);
+                    prog.IsOwner = (prog.CreatedBy == User.Identity.Name);
                 }
 
                 //ViewBag.Progams = progList;

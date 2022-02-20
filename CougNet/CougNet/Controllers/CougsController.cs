@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,7 +22,7 @@ namespace CougNet
 
         // GET: Cougs
         public async Task<IActionResult> Index()
-        { 
+        {
             var appID = User.Identity.Name;
 
             // Check if the person has a profile already
@@ -102,8 +102,18 @@ namespace CougNet
                 tempcoug.Id = coug.Id;
                 tempcoug.Firstname = coug.Firstname;
                 tempcoug.Lastname = coug.Lastname;
-                tempcoug.MajorId = coug.Major.Id;
-                tempcoug.CougYearId = coug.Year.Id;
+                if (coug.Gender != null)
+                {
+                    tempcoug.GenderId = coug.Gender.Id;
+                }
+                if (coug.Major != null)
+                {
+                    tempcoug.MajorId = coug.Major.Id;
+                }
+                if (coug.Year != null)
+                {
+                    tempcoug.CougYearId = coug.Year.Id;
+                }
             }
 
             ViewBag.Genders = new SelectList(_context.Gender.ToList(), "Id", "Name").ToList();
@@ -147,7 +157,8 @@ namespace CougNet
                             Major = major,
                             AppId = appID
                         });
-                    } else
+                    }
+                    else
                     {
                         //update the old one
                         dbCoug.Firstname = coug.Firstname;

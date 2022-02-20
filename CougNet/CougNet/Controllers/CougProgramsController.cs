@@ -89,7 +89,7 @@ namespace CougNet
 
             if (approve2)
             {
-                if (temp == null)
+                if (temp != null)
                 {
                     temp.Approved = true;
                     _context.Update(temp);

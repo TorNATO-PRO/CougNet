@@ -28,7 +28,7 @@ namespace CougNet
             }
             else
             {
-                progs = await _context.CougProgram.Where(x => x.CreatedBy == User.Identity.Name).ToListAsync()
+                progs = await _context.CougProgram.Where(x => x.CreatedBy == User.Identity.Name).ToListAsync();
             }
             return View(progs);
         }

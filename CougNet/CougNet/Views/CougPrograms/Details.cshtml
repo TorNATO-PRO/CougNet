@@ -53,14 +53,8 @@
                 <h5 class="card-title">@user.Coug.Name</h5>
                 @if (!user.Approved)
                 {
-                    <a asp-action="Details" asp-route-id="@Model.Id" asp-route-cougID="@user.Coug.Id">Approve</a>
-                    <a asp-action="Details" asp-route-id="@Model.Id">Edit</a>
-
-
-                    <form asp-action="Disapprove" method="delete">
-                        <input type="hidden" asp-for="Id" />
-                        <input type="submit" value="Disapprove" class="btn btn-danger" />
-                    </form>
+                    <a asp-action="Details" asp-route-id="@Model.Id" asp-route-cougID="@user.Coug.Id" asp-route-approve="true">Approve</a>
+                    <a asp-action="Details" asp-route-id="@Model.Id" asp-route-cougID="@user.Coug.Id" asp-route-approve="false">Disapprove</a>
                 }
             </div>
         </div>

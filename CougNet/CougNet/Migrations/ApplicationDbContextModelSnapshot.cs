@@ -152,6 +152,9 @@ namespace CougNet.Migrations
                     b.Property<int?>("CougProgramId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime>("PostDateTime")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
 

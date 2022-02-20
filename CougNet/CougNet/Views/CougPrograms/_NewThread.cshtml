@@ -1,23 +1,24 @@
 ﻿@model CougModels.Discussion
 
-<div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-            aria-expanded="true" aria-controls="collapseOne">
-            @Model.Title - @Model.Coug.Name posted on @Model.PostDateTime.ToString("F")
-        </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-        data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-            @Model.Content
+<div class="card">
+    <a name="@Model.Id">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@Model.Coug.Name on @Model.PostDateTime.ToString("MM/dd/yy hh:mm")
+            </h6>
+            <p class="card-text">@Model.Content</p>
+            <a href="#" class="btn btn-primary disabled">Post ID: @Model.Id</a>
+            @if (Model.parentID != 0)
+            {
+                <a href="#@Model.parentID" class="btn btn-success"><b>Reply to: @Model.parentID</b></a>
+            }
         </div>
-    </div>
-    @foreach (var discussions in @Model.Replies)
-    {
-        @await Html.PartialAsync("_NewThread", discussions)
-    }
+    </a>
 </div>
 
-</div>
-</div>
+
+@foreach (var discussions in @Model.Replies)
+{
+    <br />
+    @await Html.PartialAsync("_NewThread", discussions)
+}

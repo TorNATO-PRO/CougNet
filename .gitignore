@@ -112,6 +112,8 @@ ipch/
 *.ncb
 *.opendb
 *.opensdf
+*.idea
+.idea*
 *.sdf
 *.cachefile
 *.VC.db
@@ -421,7 +423,7 @@ bin
 
 # End of https://www.toptal.com/developers/gitignore/api/dotnetcore,csharp,fsharp
 
-.db
+.db*
 *.db
-.sln
+.sln*
 *.sln

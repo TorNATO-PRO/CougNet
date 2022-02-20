@@ -28,7 +28,7 @@ namespace CougNet
             }
             else
             {
-                progs = await _context.CougProgram.Where(x => x.CreatedBy == User.Identity.Name).ToListAsync()
+                progs = await _context.CougProgram.Where(x => x.CreatedBy == User.Identity.Name).ToListAsync();
             }
             return View(progs);
         }
@@ -155,6 +155,51 @@ namespace CougNet
             var cougProgram = await _context.CougProgram.FindAsync(id);
             _context.CougProgram.Remove(cougProgram);
             await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        // GET: CougPrograms/Register/5
+        public async Task<IActionResult> Register(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var cougProgram = await _context.CougProgram
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (cougProgram == null)
+            {
+                return NotFound();
+            }
+
+            return View(cougProgram);
+        }
+
+        // POST: CougPrograms/Register/5
+        [HttpPost, ActionName("Register")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegisterConfirmed(int id)
+        {
+            var cougProgram = await _context.CougProgram.FindAsync(id);
+            var coug = await _context.Coug.Where(x => x.AppId == User.Identity.Name).FirstOrDefaultAsync();
+            if (coug == null)
+            {
+                //create a dummy coug for the person
+                coug = new Coug { AppId = User.Identity.Name };
+                _context.Coug.Add(coug);
+            }
+            // check if already registered
+            if (_context.CougProgramRegistrations.FirstOrDefault(x => x.Coug.Id == coug.Id && x.CougProgram.Id == cougProgram.Id) == null)
+            {
+                _context.CougProgramRegistrations.Add(new CougProgramRegistration
+                {
+                    Coug = coug,
+                    CougProgram = cougProgram
+                });
+            }
+            await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 

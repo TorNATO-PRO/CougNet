@@ -30,5 +30,8 @@ namespace CougModels
 
         [NotMapped]
         public bool IsOwner { get; set; }
+
+        [NotMapped]
+        public bool IsRegistered { get; set; }
     }
 }

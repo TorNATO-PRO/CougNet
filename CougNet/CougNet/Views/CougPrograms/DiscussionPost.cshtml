@@ -19,6 +19,7 @@
         <span asp-validation-for="Content" class="text-danger"></span>
     </div>
     <br/>
+    @Html.HiddenFor(m => m.CougProgramId)
     <div class="form-group">
         <input type="submit" value="Post" class="btn btn-primary"/>
     </div>

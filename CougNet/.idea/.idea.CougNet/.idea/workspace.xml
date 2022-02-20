@@ -9,7 +9,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="080c4496-b8f2-429c-adb1-10cc283d525e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CougNet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CougNet/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CougNet/Cougs.db" beforeDir="false" afterPath="$PROJECT_DIR$/CougNet/Cougs.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CougNet/Views/CougPrograms/DiscussionPost.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CougNet/Views/CougPrograms/DiscussionPost.cshtml" afterDir="false" />
     </list>
@@ -79,7 +78,7 @@
       <updated>1645340959123</updated>
       <workItem from="1645340967968" duration="77000" />
       <workItem from="1645371918213" duration="916000" />
-      <workItem from="1645374580516" duration="1786000" />
+      <workItem from="1645374580516" duration="2095000" />
     </task>
     <servers />
   </component>

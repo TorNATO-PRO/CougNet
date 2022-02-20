@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CougModels
 {
@@ -24,5 +25,10 @@ namespace CougModels
 
         [Display(Name = "Publicly available?")]
         public bool IsPublic { get; set; }
+
+        public string CreatedBy { get; set; }
+
+        [NotMapped]
+        public bool IsOwner { get; set; }
     }
 }

@@ -58,6 +58,7 @@ namespace CougNet
         {
             if (ModelState.IsValid)
             {
+                cougProgram.CreatedBy = User.Identity.Name;
                 _context.Add(cougProgram);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

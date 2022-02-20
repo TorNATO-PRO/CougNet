@@ -23,7 +23,7 @@ namespace CougNet.Controllers
 
         public IActionResult Index()
         {
-            var progList = _context.CougProgram.ToList();
+            var progList = _context.CougProgram.Where(x => x.IsActive && x.IsPublic).ToList();
             ViewBag.Progams = progList;
             return View();
         }

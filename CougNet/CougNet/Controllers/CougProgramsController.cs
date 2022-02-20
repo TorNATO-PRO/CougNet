@@ -347,5 +347,64 @@ namespace CougNet
             throw new NotImplementedException();
         }
 
+        // GET: CougPrograms/DiscussionPost/5
+        public async Task<IActionResult> DiscussionPost(int? id, int? parentID)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var cougProgram = await _context.CougProgram
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (cougProgram == null)
+            {
+                return NotFound();
+            }
+
+            // check if parentID is valid
+            int pID = parentID.HasValue ? parentID.Value : 0;
+            int progID = id.HasValue ? id.Value : 0;
+
+            var post = new CougProgramDiscussion
+            {
+                CougProgramId = progID,
+                parentID = pID
+            };
+
+            return View(post);
+        }
+
+        [HttpPost, ActionName("DiscussionPost")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DiscussionPostConfirmed(CougProgramDiscussion post)
+        {
+            var cougProgram = await _context.CougProgram.FindAsync(post.CougProgramId);
+            var coug = await _context.Coug.Where(x => x.AppId == User.Identity.Name).FirstOrDefaultAsync();
+            if (coug == null)
+            {
+                //create a dummy coug for the person
+                coug = new Coug { AppId = User.Identity.Name };
+                _context.Coug.Add(coug);
+            }
+
+            _context.Discussions.Add(new Discussion
+            {
+                Content = post.Content,
+                Coug = coug,
+                PostDateTime = DateTime.Now,
+                CougProgram = cougProgram,
+                parentID = post.parentID,
+                Title = post.Title
+            }) ;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("DiscussionPost", new { id = post.CougProgramId, parentID = 0 });
+
+            //return View(cougProgram);
+            //return RedirectToAction(nameof(Index));
+        }
+
     }
 }

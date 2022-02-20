@@ -69,8 +69,8 @@ namespace CougNet
         }
 
         [HttpGet]
-        [Route("CougPrograms/Details/{id:int},{cougID:int}")]
-        public async Task<IActionResult> Details(int? id, int? cougID)
+        [Route("CougPrograms/Details/{id:int},{cougID:int},{approve:bool}")]
+        public async Task<IActionResult> Details(int? id, int? cougID, bool? approve)
         {
             if (id == null)
             {
@@ -84,21 +84,24 @@ namespace CougNet
                 return NotFound();
             }
 
-            // get users registered
-            var dbUsers = _context.CougProgramRegistrations.Where(x => x.Id == cougProgram.Id).OrderBy(x => x.Approved).Include(x => x.Coug).ToList();
+            bool approve2 = approve.HasValue ? approve.Value : false;
+            var temp = _context.CougProgramRegistrations.Where(x => x.CougProgram.Id == id && x.Coug.Id == cougID).FirstOrDefault();
 
-            var users = new List<CougProgramUserViewModel>();
-
-            foreach (var userReg in dbUsers)
+            if (approve2)
             {
-                users.Add(new CougProgramUserViewModel
+                if (temp == null)
                 {
-                    Coug = userReg.Coug,
-                    Approved = userReg.Approved
-                });
+                    temp.Approved = true;
+                    _context.Update(temp);
+                    _context.SaveChanges();
+                }
             }
-
-            ViewBag.Users = users;
+            else
+            {
+                _context.Remove(temp);
+                _context.SaveChanges();
+            }
+            
             return RedirectToAction("Details", new { id = id });
             //return View(cougProgram);
         }

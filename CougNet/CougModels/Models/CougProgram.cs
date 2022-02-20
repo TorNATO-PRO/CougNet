@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace CougModels
 {
     public class CougProgram
@@ -7,8 +9,10 @@ namespace CougModels
 
         public string Name { get; set; }
 
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
+        [Display(Name = "Approval Required?")]
         public bool ApprovalRequired { get; set; }
     }
 }

@@ -7,22 +7,43 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CougModels;
 using CougNet.Data;
+using Microsoft.Extensions.Caching.Distributed;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace CougNet
 {
     public class GendersController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IDistributedCache _distributedCache;
 
-        public GendersController(ApplicationDbContext context)
+        public GendersController(ApplicationDbContext context, IDistributedCache distributedCache)
         {
             _context = context;
+            _distributedCache = distributedCache;
         }
 
         // GET: Genders
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Gender.ToListAsync());
+            var cacheKey = "Genders";
+            var redisGenders = await _distributedCache.GetAsync(cacheKey);
+            var Genders = new List<Gender>();
+            if (redisGenders != null)
+            {
+                Genders = JsonConvert.DeserializeObject<List<Gender>>(Encoding.UTF8.GetString(redisGenders));
+            }
+            else
+            {
+                Genders = await _context.Gender.ToListAsync();
+                redisGenders = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(Genders));
+                var options = new DistributedCacheEntryOptions();
+                 //   .SetAbsoluteExpiration(DateTime.Now.AddMinutes(10))
+                  //  .SetSlidingExpiration(TimeSpan.FromMinutes(2));
+                await _distributedCache.SetAsync(cacheKey, redisGenders, options);
+            }
+            return View(Genders);
         }
 
         // GET: Genders/Details/5

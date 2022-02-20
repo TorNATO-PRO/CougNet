@@ -3,9 +3,15 @@
     ViewData["Title"] = "DiscussionBoard";
 }
 
-<h1>Discussion Board</h1>
+<h1>@Model.CougProgram.Name</h1>
 
 <div>
+    <br />
+    <h3>Program Description</h3>
+    <p>@Model.CougProgram.Description</p>
+    <hr />
+    <h3>Discussion</h3>
+    <p>Add post here...</p>
     @foreach (var discussions in @Model.Discussions)
     {
         <br />

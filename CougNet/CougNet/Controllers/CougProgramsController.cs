@@ -209,8 +209,29 @@ namespace CougNet
             //return RedirectToAction(nameof(Index));
         }
 
+        // GET: CougPrograms/Unregister/5
+        public async Task<IActionResult> Unregister(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var cougProgram = await _context.CougProgram
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (cougProgram == null)
+            {
+                return NotFound();
+            }
+
+            cougProgram.IsRegistered = (_context.CougProgramRegistrations
+                .FirstOrDefault(x => x.Coug.AppId == User.Identity.Name && x.CougProgram.Id == cougProgram.Id) != null);
+
+            return View(cougProgram);
+        }
+
         // POST: CougPrograms/Unregister/5 - used to unregister for the program
-        [HttpPost, ActionName("Register")]
+        [HttpPost, ActionName("Unregister")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Unregister(int id)
         {

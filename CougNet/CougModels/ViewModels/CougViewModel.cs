@@ -8,9 +8,11 @@ namespace CougModels.ViewModels
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please enter first name")]
+        [Display(Name = "First Name")]
         public string Firstname { get; set; }
 
         [Required(ErrorMessage = "Please enter first name")]
+        [Display(Name = "Last Name")]
         public string Lastname { get; set; }
 
         [Required(ErrorMessage = "Please enter first name")]

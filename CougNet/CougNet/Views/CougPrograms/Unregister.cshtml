@@ -34,9 +34,6 @@
  
         <form asp-action="Unregister">
             <input type="hidden" asp-for="Id" />
-            @{
-                string register = Model.ApprovalRequired ? "Request to Join" : "Join";
-            }
             <input type="submit" value="Unregister" class="btn btn-danger" /> |
             <a asp-controller="Home" asp-action="Index">Go back home</a>
         </form>

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CougModels;
 using CougNet.Data;
+using CougModels.ViewModels;
 
 namespace CougNet
 {
@@ -47,6 +48,22 @@ namespace CougNet
             {
                 return NotFound();
             }
+
+            // get users registered
+            var dbUsers = _context.CougProgramRegistrations.Where(x => x.Id == cougProgram.Id).OrderBy(x => x.Approved).Include(x => x.Coug).ToList();
+
+            var users = new List<CougProgramUserViewModel>();
+
+            foreach (var userReg in dbUsers)
+            {
+                users.Add(new CougProgramUserViewModel
+                {
+                    Coug = userReg.Coug,
+                    Approved = userReg.Approved
+                });
+            }
+
+            ViewBag.Users = users;
 
             return View(cougProgram);
         }

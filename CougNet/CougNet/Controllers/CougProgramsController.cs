@@ -22,7 +22,15 @@ namespace CougNet
         // GET: CougPrograms
         public async Task<IActionResult> Index()
         {
-            return View(await _context.CougProgram.Where(x => x.CreatedBy == User.Identity.Name).ToListAsync());
+            var progs = new List<CougProgram>();
+            if (User.IsInRole("Admin")) {
+                progs =  await _context.CougProgram.ToListAsync();
+            }
+            else
+            {
+                progs = await _context.CougProgram.Where(x => x.CreatedBy == User.Identity.Name).ToListAsync()
+            }
+            return View(progs);
         }
 
         // GET: CougPrograms/Details/5
@@ -98,6 +106,10 @@ namespace CougNet
             {
                 try
                 {
+                    if (string.IsNullOrEmpty(cougProgram.CreatedBy))
+                    {
+                        cougProgram.CreatedBy = User.Identity.Name; //temp fix for blank created bys
+                    }
                     _context.Update(cougProgram);
                     await _context.SaveChangesAsync();
                 }

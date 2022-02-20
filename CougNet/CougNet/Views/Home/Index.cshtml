@@ -32,7 +32,7 @@
                 <p class="card-text">@program.Requirements</p>
                 @if (program.IsRegistered)
                 {
-                    <a asp-controller="CougPrograms" asp-action="Edit" class="btn btn-success " asp-route-id="@program.Id">Discussion Board</a>
+                    <a asp-controller="CougPrograms" asp-action="DiscussionBoard" class="btn btn-success " asp-route-id="@program.Id">Discussion Board</a>
                     <a asp-controller="CougPrograms" asp-action="Unregister" class="btn btn-danger " asp-route-id="@program.Id">
                         Unregister
                     </a>
@@ -46,7 +46,7 @@
                 }
                 @if (program.IsOwner)
                 {
-                    <a asp-controller="CougPrograms" asp-action="Edit" class="btn btn-warning " asp-route-id="@program.Id">Edit</a>
+                    <a asp-controller="CougPrograms" asp-action="Details" class="btn btn-primary " asp-route-id="@program.Id">View</a>
                 }
             </div>
         </div>

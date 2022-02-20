@@ -50,7 +50,7 @@ namespace CougNet
             }
 
             // get users registered
-            var dbUsers = _context.CougProgramRegistrations.Where(x => x.Id == cougProgram.Id).OrderBy(x => x.Approved).Include(x => x.Coug).ToList();
+            var dbUsers = _context.CougProgramRegistrations.Where(x => x.CougProgram.Id == cougProgram.Id).OrderBy(x => x.Approved).Include(x => x.Coug).ToList();
 
             var users = new List<CougProgramUserViewModel>();
 

@@ -372,6 +372,20 @@ namespace CougNet
                 parentID = pID
             };
 
+            if (pID != 0)
+            {
+                //get parent discussion
+                var parent = _context.Discussions.FirstOrDefault(x => x.Id == pID);
+                if (parent != null)
+                {
+                    post.PageTitle = "Replying to " + parent.Title;
+                }
+
+            } else
+            {
+                post.PageTitle = "Create New Thread";
+            }
+
             return View(post);
         }
 

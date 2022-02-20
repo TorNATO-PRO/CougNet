@@ -11,6 +11,8 @@
     <p>@Model.CougProgram.Description</p>
     <hr />
     <h3>Discussion</h3>
+    <a asp-action="DiscussionPost" class="btn btn-primary" asp-route-id="@Model.CougProgram.Id">Create New Post</a>
+    <br />
     @foreach (var discussions in @Model.Discussions)
     {
         <br />

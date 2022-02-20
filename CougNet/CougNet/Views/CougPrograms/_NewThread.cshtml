@@ -4,21 +4,27 @@
     <a id="@Model.Id">
         <div class="card-body">
             <h5 class="card-title">@Model.Title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">@Model.Coug.Name on @Model.PostDateTime.ToString("MM/dd/yy hh:mm")
+            <h6 class="card-subtitle mb-2 text-muted">
+                @Model.Coug.Name on @Model.PostDateTime.ToString("MM/dd/yy hh:mm")
             </h6>
             <p class="card-text">@Model.Content</p>
-            <a href="#" class="btn btn-primary disabled">Post ID: @Model.Id</a>
-            @if (Model.parentID != 0)
-            {
-                <a href="#@Model.parentID" class="btn btn-success"><b>Reply to: @Model.parentID</b></a>
-            }
+            <!-- <a href="#" class="btn btn-primary disabled">Post ID: @Model.Id</a> -->
+            <a asp-action="DiscussionPost" class="btn btn-primary" asp-route-id="@Model.CougProgram.Id" asp-route-parentID="@Model.Id">Reply</a>
+            <!--  <a href="#@Model.parentID" class="btn btn-success"><b>Reply to: @Model.parentID</b></a> -->
         </div>
     </a>
 </div>
+<div class="container">
+    @foreach (var discussions in @Model.Replies)
+    {
+        <div class="row">
+            <div class="col-1">
+            </div>
+            <div class="col-11">
 
-
-@foreach (var discussions in @Model.Replies)
-{
-    <br />
-    @await Html.PartialAsync("_NewThread", discussions)
-}
+                <br/>
+                @await Html.PartialAsync("_NewThread", discussions)
+            </div>
+        </div>
+    }
+</div>

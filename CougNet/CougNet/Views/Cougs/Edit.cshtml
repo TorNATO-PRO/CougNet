@@ -25,19 +25,19 @@
             <div class="form-group">
                 <label asp-for="GenderId" class="control-label"></label>
                 <select asp-for="GenderId" class="form-control"
-                        asp-items="@(IEnumerable <SelectListItem>)ViewBag.Genders"></select>
+                        asp-items="@((IEnumerable <SelectListItem>)ViewBag.Genders)"></select>
                 <span asp-validation-for="GenderId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="MajorId" class="control-label"></label>
                 <select asp-for="MajorId" class="form-control"
-                        asp-items="@(IEnumerable <SelectListItem>)ViewBag.Majors"></select>
+                        asp-items="@((IEnumerable <SelectListItem>)ViewBag.Majors)"></select>
                 <span asp-validation-for="MajorId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CougYearId" class="control-label"></label>
                 <select asp-for="CougYearId" class="form-control"
-                        asp-items="@(IEnumerable <SelectListItem>)ViewBag.Years"></select>
+                        asp-items="@((IEnumerable <SelectListItem>)ViewBag.Years)"></select>
                 <span asp-validation-for="CougYearId" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,14 +23,18 @@ namespace CougNet
         // GET: Cougs
         public async Task<IActionResult> Index()
         {
+            if (User.Identity == null)
+            {
+                throw new NullReferenceException();
+            }
+
             var appID = User.Identity.Name;
 
             // Check if the person has a profile already
-            var cougProfile = _context.Coug
+            var cougProfile = await _context.Coug
                 .Include(x => x.Gender)
                 .Include(x => x.Year)
-                .Include(x => x.Major)
-                .Where(x => x.AppId == appID).FirstOrDefault();
+                .Include(x => x.Major).FirstOrDefaultAsync(x => x.AppId == appID);
 
             if (cougProfile == null)
             {
@@ -90,11 +94,11 @@ namespace CougNet
                 return NotFound();
             }
 
-            var coug = _context.Coug
+            var coug = await _context.Coug
                 .Include(x => x.Major)
                 .Include(x => x.Gender)
                 .Include(x => x.Year)
-                .FirstOrDefault(x => x.Id == id);
+                .FirstOrDefaultAsync(x => x.Id == id);
             var tempcoug = new CougViewModel { AppId = appID };
 
             if (coug != null)
@@ -102,18 +106,8 @@ namespace CougNet
                 tempcoug.Id = coug.Id;
                 tempcoug.Firstname = coug.Firstname;
                 tempcoug.Lastname = coug.Lastname;
-                if (coug.Gender != null)
-                {
-                    tempcoug.GenderId = coug.Gender.Id;
-                }
-                if (coug.Major != null)
-                {
-                    tempcoug.MajorId = coug.Major.Id;
-                }
-                if (coug.Year != null)
-                {
-                    tempcoug.CougYearId = coug.Year.Id;
-                }
+                tempcoug.MajorId = coug.Major.Id;
+                tempcoug.CougYearId = coug.Year.Id;
             }
 
             ViewBag.Genders = new SelectList(_context.Gender.ToList(), "Id", "Name").ToList();

@@ -210,7 +210,7 @@ namespace CougNet
         }
 
         // PATCH: CougPrograms/Register/5 - used to unregister for the program
-        [HttpPost, ActionName("Unregister")]
+        [HttpPatch, ActionName("Register")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Unregister(int id)
         {

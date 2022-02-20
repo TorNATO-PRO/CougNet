@@ -9,10 +9,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="080c4496-b8f2-429c-adb1-10cc283d525e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CougNet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CougNet/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CougModels/ViewModels/CougProgramDiscussion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CougModels/ViewModels/CougProgramDiscussion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CougNet/Views/CougPrograms/DiscussionBoard.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CougNet/Views/CougPrograms/DiscussionBoard.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CougNet/Views/CougPrograms/_NewThread.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CougNet/Views/CougPrograms/_NewThread.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CougNet/Controllers/CougProgramsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CougNet/Controllers/CougProgramsController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +78,7 @@
       <updated>1645340959123</updated>
       <workItem from="1645340967968" duration="77000" />
       <workItem from="1645371918213" duration="916000" />
-      <workItem from="1645374580516" duration="505000" />
+      <workItem from="1645374580516" duration="1049000" />
     </task>
     <servers />
   </component>

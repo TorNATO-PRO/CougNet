@@ -173,6 +173,9 @@ namespace CougNet
                 return NotFound();
             }
 
+            cougProgram.IsRegistered = (_context.CougProgramRegistrations
+                .FirstOrDefault(x => x.Coug.AppId == User.Identity.Name && x.CougProgram.Id == cougProgram.Id) != null);
+
             return View(cougProgram);
         }
 
@@ -200,7 +203,10 @@ namespace CougNet
             }
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Index));
+            cougProgram.IsRegistered = true;
+
+            return View(cougProgram);
+            //return RedirectToAction(nameof(Index));
         }
 
         private bool CougProgramExists(int id)

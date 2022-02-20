@@ -13,5 +13,7 @@ namespace CougModels.ViewModels
 
         public int CougID { get; set; }
 
+        public Discussion NewDiscussion { get; set; }
+
     }
 }

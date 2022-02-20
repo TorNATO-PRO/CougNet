@@ -9,8 +9,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="080c4496-b8f2-429c-adb1-10cc283d525e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/CougModels/ViewModels/CougProgramDiscussion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CougModels/ViewModels/CougProgramDiscussion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CougNet/Controllers/CougProgramsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CougNet/Controllers/CougProgramsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CougNet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CougNet/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CougNet/Cougs.db" beforeDir="false" afterPath="$PROJECT_DIR$/CougNet/Cougs.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CougNet/Views/CougPrograms/DiscussionPost.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CougNet/Views/CougPrograms/DiscussionPost.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +79,7 @@
       <updated>1645340959123</updated>
       <workItem from="1645340967968" duration="77000" />
       <workItem from="1645371918213" duration="916000" />
-      <workItem from="1645374580516" duration="1049000" />
+      <workItem from="1645374580516" duration="1786000" />
     </task>
     <servers />
   </component>
@@ -101,6 +102,25 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/CougNet/Controllers/CougProgramsController.cs</url>
+          <line>404</line>
+          <properties documentPath="$PROJECT_DIR$/CougNet/Controllers/CougProgramsController.cs" initialLine="404" containingFunctionPresentation="method 'DiscussionPostConfirmed'">
+            <startOffsets>
+              <option value="13249" />
+            </startOffsets>
+            <endOffsets>
+              <option value="13553" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,7 +1,7 @@
 ﻿@model CougModels.Discussion
 
 <div class="card">
-    <a name="@Model.Id">
+    <a id="@Model.Id">
         <div class="card-body">
             <h5 class="card-title">@Model.Title</h5>
             <h6 class="card-subtitle mb-2 text-muted">@Model.Coug.Name on @Model.PostDateTime.ToString("MM/dd/yy hh:mm")

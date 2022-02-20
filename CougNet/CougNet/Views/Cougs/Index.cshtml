@@ -12,11 +12,14 @@
         <p><b>@Html.DisplayNameFor(model => model.Name)</b></p>
         <p>@Html.DisplayFor(model => model.Name)</p>
         <p><b>@Html.DisplayNameFor(model => model.Gender)</b></p>
-        <p>@Html.DisplayFor(model => model.Gender)</p>
+        <p>@Html.DisplayFor(model => model.Gender.Name)</p>
         <p><b>@Html.DisplayNameFor(model => model.Year)</b></p>
-        <p>@Html.DisplayFor(model => model.Year)</p>
+        <p>@Html.DisplayFor(model => model.Year.Year)</p>
+        <p><b>@Html.DisplayNameFor(model => model.Major)</b></p>
+        <p>@Html.DisplayFor(model => model.Major.Name)</p>
     </div>
 </div>
+<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

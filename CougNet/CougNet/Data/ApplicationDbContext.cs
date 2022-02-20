@@ -17,5 +17,6 @@ namespace CougNet.Data
         public DbSet<CougModels.CougYear> CougYear { get; set; }
         public DbSet<CougModels.CougCourse> CougCourse { get; set; }
         public DbSet<CougModels.Coug> Coug { get; set; }
+        public DbSet<CougModels.Program> Program { get; set; }
     }
 }

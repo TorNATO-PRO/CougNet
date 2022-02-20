@@ -16,7 +16,9 @@
 <div>
     @foreach (var discussions in @Model.Discussions)
     {
-        @await Html.PartialAsync("_NewThread", discussions)
+        <div class="accordion" id="accordionExample">
+            @await Html.PartialAsync("_NewThread", discussions)
+        </div>
     }
     <a asp-action="Index">Back to List</a>
 </div>

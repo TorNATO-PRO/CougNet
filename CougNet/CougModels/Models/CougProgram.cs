@@ -27,6 +27,7 @@ namespace CougModels
         [Display(Name = "Publicly available?")]
         public bool IsPublic { get; set; }
 
+        [Display(Name = "Created By")]
         public string CreatedBy { get; set; }
 
         [NotMapped]

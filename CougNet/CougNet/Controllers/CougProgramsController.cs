@@ -99,8 +99,8 @@ namespace CougNet
             }
 
             ViewBag.Users = users;
-
-            return View(cougProgram);
+            return RedirectToAction("Details", new { id = id });
+            //return View(cougProgram);
         }
 
         // GET: CougPrograms/Create

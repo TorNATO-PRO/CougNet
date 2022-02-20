@@ -209,8 +209,9 @@ namespace CougNet
             //return RedirectToAction(nameof(Index));
         }
 
-        // GET: CougPrograms/Unregister/5 - used to unregister for the program
-        
+        // POST: CougPrograms/Unregister/5 - used to unregister for the program
+        [HttpPost, ActionName("Register")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Unregister(int id)
         {
             var cougProgram = await _context.CougProgram.FindAsync(id);

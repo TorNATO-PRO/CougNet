@@ -22,7 +22,7 @@ namespace CougNet
         // GET: CougPrograms
         public async Task<IActionResult> Index()
         {
-            return View(await _context.CougProgram.ToListAsync());
+            return View(await _context.CougProgram.Where(x => x.CreatedBy == User.Identity.Name).ToListAsync());
         }
 
         // GET: CougPrograms/Details/5

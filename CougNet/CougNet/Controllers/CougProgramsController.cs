@@ -318,7 +318,8 @@ namespace CougNet
             disBoard.Discussions = new List<Discussion>();
 
             //Get the base discussions
-            var baseList = _context.Discussions.Where(x => x.CougProgram.Id == cougProgram.Id && x.parentID == 0).ToList();
+            var baseList = _context.Discussions.Where(x => x.CougProgram.Id == cougProgram.Id && x.parentID == 0)
+                .Include(x => x.Coug).ToList();
             //level 1:
             foreach (var dis1 in baseList)
             {
@@ -332,7 +333,8 @@ namespace CougNet
 
         public List<Discussion> GetDiscussions(Discussion disc, CougProgram coug)
         {
-            var replies = _context.Discussions.Where(x => x.CougProgram.Id == coug.Id && x.parentID == disc.Id).ToList();
+            var replies = _context.Discussions.Where(x => x.CougProgram.Id == coug.Id && x.parentID == disc.Id)
+                .Include(x => x.Coug).ToList();
             foreach (var dis in replies)
             {
                 dis.Replies = GetDiscussions(dis, coug);

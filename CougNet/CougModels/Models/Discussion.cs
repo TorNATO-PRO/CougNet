@@ -1,20 +1,27 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CougModels.Models
+namespace CougModels
 {
-    internal class Discussion
+    public class Discussion
     {
         [Key]
         public int Id { get; internal set; }
 
-        internal Discussion(IEnumerable<Broadcast> broadcast)
-        {
-            this.Broadcasts = broadcast;
-        }
+        public CougProgram CougProgram { get; set; }
 
-        public IEnumerable<Broadcast> Broadcasts { get; internal set; }
+        [DefaultValue(0)]
+        public int parentID { get; set; }
 
-        public CougProgram Program { get; internal set; }
+        public string Title { get; set; }
+
+        public string Content { get; set; }
+
+        public Coug Coug { get; set; }
+
+        [NotMapped]
+        public List<Discussion> Replies { get; set; }
     }
 }

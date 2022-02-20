@@ -270,5 +270,36 @@ namespace CougNet
         {
             return _context.CougProgram.Any(e => e.Id == id);
         }
+
+        public async Task<IActionResult> DiscussionBoard(int id)
+        {
+            var cougProgram = await _context.CougProgram.FindAsync(id);
+
+            var disBoard = new CougProgramDiscussionBoard();
+            disBoard.CougProgram = cougProgram;
+            disBoard.Discussions = new List<Discussion>();
+
+            //Get the base discussions
+            var baseList = _context.Discussions.Where(x => x.CougProgram.Id == cougProgram.Id && x.parentID == 0).ToList();
+            //level 1:
+            foreach (var dis1 in baseList)
+            {
+                dis1.Replies = GetDiscussions(dis1, cougProgram);
+            }
+
+            disBoard.Discussions = baseList;
+
+            return View(disBoard);
+        }
+
+        public List<Discussion> GetDiscussions(Discussion disc, CougProgram coug)
+        {
+            var replies = _context.Discussions.Where(x => x.CougProgram.Id == coug.Id && x.parentID == disc.Id).ToList();
+            foreach (var dis in replies)
+            {
+                dis.Replies = GetDiscussions(dis, coug);
+            }
+            return replies;
+        }
     }
 }

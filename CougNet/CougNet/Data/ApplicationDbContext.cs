@@ -13,11 +13,12 @@ namespace CougNet.Data
             : base(options)
         {
         }
-        public DbSet<CougModels.Gender> Gender { get; set; }
-        public DbSet<CougModels.CougYear> CougYear { get; set; }
-        public DbSet<CougModels.CougCourse> CougCourse { get; set; }
-        public DbSet<CougModels.Coug> Coug { get; set; }
-        public DbSet<CougModels.CougProgram> CougProgram { get; set; }
+        public DbSet<Gender> Gender { get; set; }
+        public DbSet<CougYear> CougYear { get; set; }
+        public DbSet<CougCourse> CougCourse { get; set; }
+        public DbSet<Coug> Coug { get; set; }
+        public DbSet<CougProgram> CougProgram { get; set; }
         public DbSet<CougProgramRegistration> CougProgramRegistrations { get; set; }
+        public DbSet<Discussion> Discussions { get; set; }
     }
 }

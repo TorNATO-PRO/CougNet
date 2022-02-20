@@ -6,6 +6,7 @@ namespace CougModels
 {
     public class CougProgram
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]

@@ -68,6 +68,41 @@ namespace CougNet
             return View(cougProgram);
         }
 
+        [HttpGet]
+        [Route("CougPrograms/Details/{id:int},{cougID:int}")]
+        public async Task<IActionResult> Details(int? id, int? cougID)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var cougProgram = await _context.CougProgram
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (cougProgram == null)
+            {
+                return NotFound();
+            }
+
+            // get users registered
+            var dbUsers = _context.CougProgramRegistrations.Where(x => x.Id == cougProgram.Id).OrderBy(x => x.Approved).Include(x => x.Coug).ToList();
+
+            var users = new List<CougProgramUserViewModel>();
+
+            foreach (var userReg in dbUsers)
+            {
+                users.Add(new CougProgramUserViewModel
+                {
+                    Coug = userReg.Coug,
+                    Approved = userReg.Approved
+                });
+            }
+
+            ViewBag.Users = users;
+
+            return View(cougProgram);
+        }
+
         // GET: CougPrograms/Create
         public IActionResult Create()
         {

@@ -1,10 +1,10 @@
 ﻿@model CougModels.CougProgram
 
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Unregister";
 }
 
-<h1>Program Registration</h1>
+<h1>Are you sure you want to unregister?</h1>
 <br />
 
 <div>
@@ -31,24 +31,15 @@
         </dd>
     </dl>
 
-    @if (Model.IsRegistered)
-    {
+ 
         <form asp-action="Unregister">
-            <input type="hidden" asp-for="Id" />
-            <a class="btn-primary btn" asp-action="Unregister"  asp-route-id="@Model.Id">Unregister</a>
-            <a asp-controller="Home" asp-action="Index">Go back home</a>
-        </form>
-    }
-    else
-    {
-        <form asp-action="Register">
             <input type="hidden" asp-for="Id" />
             @{
                 string register = Model.ApprovalRequired ? "Request to Join" : "Join";
             }
-            <input type="submit" value="@register" class="btn btn-primary" /> |
+            <input type="submit" value="Unregister" class="btn btn-danger" /> |
             <a asp-controller="Home" asp-action="Index">Go back home</a>
         </form>
-    }
+
 
 </div>

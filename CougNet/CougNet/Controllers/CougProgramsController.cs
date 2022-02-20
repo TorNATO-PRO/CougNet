@@ -209,9 +209,8 @@ namespace CougNet
             //return RedirectToAction(nameof(Index));
         }
 
-        // PATCH: CougPrograms/Register/5 - used to unregister for the program
-        [HttpPatch, ActionName("Register")]
-        [ValidateAntiForgeryToken]
+        // GET: CougPrograms/Unregister/5 - used to unregister for the program
+        
         public async Task<IActionResult> Unregister(int id)
         {
             var cougProgram = await _context.CougProgram.FindAsync(id);
@@ -225,7 +224,7 @@ namespace CougNet
             }
 
             cougProgram.IsRegistered = false;
-            return View(cougProgram);
+            return RedirectToAction("Register", new { id = id });
         }
 
         private bool CougProgramExists(int id)

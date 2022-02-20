@@ -9,9 +9,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="080c4496-b8f2-429c-adb1-10cc283d525e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CougNet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CougNet/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CougNet/Cougs.db" beforeDir="false" afterPath="$PROJECT_DIR$/CougNet/Cougs.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CougNet/Views/CougPrograms/DiscussionBoard.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CougNet/Views/CougPrograms/DiscussionBoard.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CougNet/Views/CougPrograms/_NewThread.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CougNet/Views/CougPrograms/_NewThread.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CougNet/Views/Cougs/Edit.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CougNet/Views/Cougs/Edit.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CougNet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/CougNet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CougNet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/CougNet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CougNet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/CougNet/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css" afterDir="false" />
@@ -102,7 +103,7 @@
     <option name="version" value="3" />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

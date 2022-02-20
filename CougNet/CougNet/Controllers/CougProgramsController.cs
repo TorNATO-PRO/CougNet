@@ -339,5 +339,10 @@ namespace CougNet
             }
             return replies;
         }
+
+        public IActionResult CreateThread()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

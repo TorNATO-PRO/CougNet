@@ -425,3 +425,4 @@ bin
 *.db
 .sln
 *.sln
+*.db

@@ -5,6 +5,18 @@
 
 <h1>Discussion Board</h1>
 
+@functions {
+    public void buildDiscussion()
+    {
+        
+    }
+}
+
+
 <div>
+    @foreach (var discussions in @Model.Discussions)
+    {
+        @await Html.PartialAsync("_NewThread", discussions)
+    }
     <a asp-action="Index">Back to List</a>
 </div>

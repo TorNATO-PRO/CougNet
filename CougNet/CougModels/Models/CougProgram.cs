@@ -1,7 +1,7 @@
 ﻿using System;
 namespace CougModels
 {
-    public class Program
+    public class CougProgram
     {
         public int Id { get; set; }
 
